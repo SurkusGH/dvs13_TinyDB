@@ -40,10 +40,8 @@ namespace dvs13_checkpoint_TinyDB
 
             #endregion
 
-            //DataCreation.AddCourse();
-            //DataCreation.AddToExistingCourse();
-            //DataCreation.AddLectureToExistingCourse();
-            DataReading.Dev_QueryCourses();
+            Root.Menu();
+
         }
     }
 }

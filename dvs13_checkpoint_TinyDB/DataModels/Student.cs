@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace dvs13_checkpoint_TinyDB.DataModels
 {
-    public class Student
+    public class Student : Common
     {
-        public int ID { get; set; }
         public string Name { get; set; }
         public List<Lecture> LectureList { get; set; } = new();
         public Course Course { get; set; }
