@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dvs13_checkpoint_TinyDB.Functions;
+using System;
 
 namespace dvs13_checkpoint_TinyDB
 {
@@ -29,7 +30,7 @@ namespace dvs13_checkpoint_TinyDB
 
             #endregion
 
-            #region PMC_Commands
+            #region ConsoleCommands
 
             // Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 5.0.10
             // Install-Package Microsoft.EntityFrameworkCore.Tools -Version 5.0.10
@@ -38,6 +39,11 @@ namespace dvs13_checkpoint_TinyDB
             // Update-Database
 
             #endregion
+
+            //DataCreation.AddCourse();
+            //DataCreation.AddToExistingCourse();
+            //DataCreation.AddLectureToExistingCourse();
+            DataReading.Dev_QueryCourses();
         }
     }
 }

@@ -5,7 +5,7 @@ namespace dvs13_checkpoint_TinyDB.DataAccess
 {
     public class Context : DbContext
     {
-        public virtual DbSet<Course> Departments { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Lecture> Lectures { get; set; }
         public virtual DbSet<Student> Students { get; set; }
 
