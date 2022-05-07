@@ -13,15 +13,16 @@ namespace dvs13_TinyDB
         {
             Console.WriteLine();
             Console.WriteLine($"\nFunctions:" +
-                              $"\n [1] -> create a *COURSE* + *STUDENT* + *LECTURES*" +
+                              $"\n\n [1] -> create a *COURSE* + *STUDENT* + *LECTURES*" +
                               $"\n                  (!)new     (!)new      (!)new" +
                               $"\n\n [2] -> add *STUDENT* + *LECTURES* to *COURSE*" +
-                              $"\n             (!)new         (!)new      (!)in_DB" +
+                              $"\n             (!)new       (!)new      (!)in_DB" +
                               $"\n\n [3] -> add *LECTURES* to *COURSE*" +
-                              $"\n              (!)new       (!)in_DB" +
+                              $"\n              (!)new     (!)in_DB" +
                               $"\n\n [4] -> *COURSE* + *STUDENT* + *LECTURES*" +
                               $"\n        (!)in_DB    (!)new     (!)in_DB" +
-                              $"\n\n [5] -> transfer *STUDENT* to other *COURSE*" +
+                              $"\n\n [5] -> transfer *STUDENT* to another *COURSE*" +
+                              $"\n                 (!)in_DB             (!)in_DB" +
                               $"\n\n\nDB Data Depictiom:" +
                               $"\n [6] -> print *COURSES* w/ all asociated *STUDENTS*" +
                               $"\n [7] -> print *COURSES* w/ all asociated *LECTURES*" +
@@ -31,43 +32,43 @@ namespace dvs13_TinyDB
 
             switch (InputValidationHelper.IntInputValidation(10))
             {
-                case 1:
+                case 0:
                     DataCreation.AddCourse();
                     Menu();
                     break;
-                case 2:
+                case 1:
                     DataCreation.ToExistingCourse_Add_StudentLectures();
                     Menu();
                     break;
-                case 3:
+                case 2:
                     DataCreation.ToExistingCourse_Add_Lectures();
                     Menu();
                     break;
-                case 4:
+                case 3:
                     DataCreation.ToExistingCourse_Add_CreatedStudent_AddExistingLectures();
                     Menu();
                     break;
-                case 5:
-                    //Missing function;
+                case 4:
+                    DataCreation.Change_ExistingStudents_CourseAlociation();
                     Menu();
                     break;
-                case 6:
+                case 5:
                     DataReading.QueryStudentsByCourse();
                     Menu();
                     break;
-                case 7:
+                case 6:
                     DataReading.QueryLecturesByCourse();
                     Menu();
                     break;
-                case 8:
+                case 7:
                     DataReading.QueryLecturesByStudent();
                     Menu();
                     break;
-                case 9:
+                case 8:
                     DataReading.Dev_QueryCourses();
                     Menu();
                     break;
-                case 10:
+                case 9:
                     Environment.Exit(1);
                     break;
             }

@@ -67,6 +67,7 @@ namespace dvs13_TinyDB.Functions
         }
         #endregion
 
+        #region AdditionalFunctionality
         public static void Dev_QueryCourses()
         {
             var courses = db.Courses.Include(x => x.LectureList).Include(x => x.StudentList);
@@ -104,7 +105,7 @@ namespace dvs13_TinyDB.Functions
                     Console.WriteLine($"         {student.ID} - {student.Name}");
                 }
             }
-
         }
+        #endregion
     }
 }

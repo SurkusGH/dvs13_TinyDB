@@ -166,9 +166,6 @@ namespace dvs13_TinyDB.Functions
         {
             int i = 1;
             var queryedLectures = db.Lectures.Include(x => x.CourseList).Where(x => x.CourseList.Contains(course)).ToList();
-            //var targetLectures = queryedLectures.Where(x => x.CourseList.Contains(course)).ToList();
-            // Lectures.Include(lect => lect.ListDepartments).Where(x=>x.ListDepartments.Contains(department)).ToList()
-
 
             var indexLimiter = queryedLectures.Count();
 
@@ -176,10 +173,38 @@ namespace dvs13_TinyDB.Functions
             foreach (var lecture in queryedLectures) {Console.WriteLine($"{i++} - {lecture.Name}");}
 
             var userSelection = InputValidationHelper.IntInputValidation(indexLimiter);
-            var selectedLecture = queryedLectures[userSelection-1];
+            var selectedLecture = queryedLectures[userSelection];
             return selectedLecture;
         }
 
-            #endregion
+        #endregion
+
+        public static void Change_ExistingStudents_CourseAlociation()
+        {
+            Console.WriteLine("Existing Students and their course allocation:");
+            int i = 1;
+            var allStudents = db.Students.Include(x => x.Course).ToList();
+            var indexLimiter = allStudents.Count();
+            foreach (var student in allStudents)
+            {
+                Console.WriteLine($"index:{i++} - {student.Name} - course: {student.Course.Name} ");
+            }
+
+            Console.WriteLine("Select a student to move a course:");
+
+            var selectedStudent = allStudents[InputValidationHelper.IntInputValidation(indexLimiter)];
+
+            Console.WriteLine($"Select a new course for a student {selectedStudent.Name}:");
+            var j = 1;
+            db.Courses.Select(x => x.Name).ToList().ForEach(x => Console.WriteLine($"{j++} - {x}"));
+            var indexLimiter2 = db.Courses.Select(x => x.Name).ToList().Count();
+            var selectedtCourse = db.Courses.SingleOrDefault(x => x.ID == (InputValidationHelper.IntInputValidation(indexLimiter2)+1));
+
+            Console.WriteLine($"Student {selectedStudent.Name} ir moved to {selectedtCourse.Name}");
+            selectedStudent.Course = selectedtCourse;
+
+            db.Update(selectedStudent);
+            db.SaveChanges();
+        }
     }
 }

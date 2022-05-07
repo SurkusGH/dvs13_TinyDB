@@ -30,10 +30,12 @@ namespace dvs13_TinyDB
 
             #endregion
 
-            #region ConsoleCommands
-
+            #region EntityFramework v5.0.1.0 packageInstallation
             // Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 5.0.10
             // Install-Package Microsoft.EntityFrameworkCore.Tools -Version 5.0.10
+            #endregion
+
+            #region Migration Command Lines
 
             // Add-Migration InitialCreate
             // Update-Database

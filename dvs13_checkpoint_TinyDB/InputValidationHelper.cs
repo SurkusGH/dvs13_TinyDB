@@ -46,7 +46,7 @@ namespace dvs13_TinyDB.Functions
                 success = int.TryParse(input, out inputValue) && inputValue >= 0 && inputValue <= validatorSize;
             }
             Console.Clear();
-            return inputValue;
+            return inputValue-1;
         }
     }
 }
