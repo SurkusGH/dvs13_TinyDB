@@ -1,16 +1,17 @@
-﻿using dvs13_checkpoint_TinyDB.Functions;
+﻿using dvs13_TinyDB.Functions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dvs13_checkpoint_TinyDB
+namespace dvs13_TinyDB
 {
     public class Root
     {
         public static void Menu()
         {
+            Console.WriteLine();
             Console.WriteLine($"Functions:" +
                               $"\n [1] to create a *COURSE* + *STUDENT* + *LECTURES*" +
                               $"\n [2] to add *STUDENT* + *LECTURES* to existing *COURSE*" +
@@ -43,7 +44,7 @@ namespace dvs13_checkpoint_TinyDB
                     Menu();
                     break;
                 case 5:
-                    
+                    //Missing function;
                     Menu();
                     break;
                 case 6:
@@ -62,7 +63,6 @@ namespace dvs13_checkpoint_TinyDB
                     DataReading.Dev_QueryCourses();
                     Menu();
                     break;
-
                 case 10:
                     Environment.Exit(1);
                     break;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dvs13_checkpoint_TinyDB.Functions
+namespace dvs13_TinyDB.Functions
 {
     public class InputValidationHelper
     {

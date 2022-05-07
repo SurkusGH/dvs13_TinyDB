@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using dvs13_checkpoint_TinyDB.DataAccess;
+using dvs13_TinyDB.DataAccess;
 
-namespace dvs13_checkpoint_TinyDB.Migrations
+namespace dvs13_TinyDB.Migrations
 {
     [DbContext(typeof(Context))]
     [Migration("20220501101719_CreateTableModels")]

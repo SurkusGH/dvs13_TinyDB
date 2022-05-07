@@ -1,7 +1,7 @@
-﻿using dvs13_checkpoint_TinyDB.DataModels;
+﻿using dvs13_TinyDB.DataModels;
 using Microsoft.EntityFrameworkCore;
 
-namespace dvs13_checkpoint_TinyDB.DataAccess
+namespace dvs13_TinyDB.DataAccess
 {
     public class Context : DbContext
     {

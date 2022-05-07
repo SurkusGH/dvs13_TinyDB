@@ -1,5 +1,5 @@
-﻿using dvs13_checkpoint_TinyDB.DataAccess;
-using dvs13_checkpoint_TinyDB.DataModels;
+﻿using dvs13_TinyDB.DataAccess;
+using dvs13_TinyDB.DataModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dvs13_checkpoint_TinyDB.Functions
+namespace dvs13_TinyDB.Functions
 {
 
     public class DataCreation
@@ -122,7 +122,6 @@ namespace dvs13_checkpoint_TinyDB.Functions
         //       egzistuojančias paskaitas;
         public static void ToExistingCourse_Add_CreatedStudent_AddExistingLectures()
         {
-            Course course = new();
             Console.WriteLine("Existing Courses");
             int i = 1;
             db.Courses.Select(x => x.Name).ToList().ForEach(x => Console.WriteLine($"{i++} - {x}"));
@@ -148,14 +147,14 @@ namespace dvs13_checkpoint_TinyDB.Functions
             student.Name = Console.ReadLine();
 
             student.Course = course;
-
-            student.LectureList.Add(AddLectureFromList(course, student));
+            
+            student.LectureList.Add(AddLectureFromList(course));
 
             Console.WriteLine($"Add *More* lectures? y/n");
             var input = InputValidationHelper.CharInputValidation();
             while (input == "y")
             {
-                student.LectureList.Add(AddLectureFromList(course, student));
+                student.LectureList.Add(AddLectureFromList(course));
                 Console.WriteLine($"Add *More* lectures? y/n");
                 input = InputValidationHelper.CharInputValidation();
             }
@@ -163,19 +162,22 @@ namespace dvs13_checkpoint_TinyDB.Functions
             return student;
         }
 
-        public static Lecture AddLectureFromList(Course course, Student student)
+        public static Lecture AddLectureFromList(Course course)
         {
             int i = 1;
-            var indexedCourse = db.Courses.Include(x => x.LectureList).Where(x => x.ID == course.ID);
-            var indexLimiter = db.Courses.Include(x => x.LectureList).Where(x => x.ID == course.ID).Count();
+            var queryedLectures = db.Lectures.Include(x => x.CourseList).Where(x => x.CourseList.Contains(course)).ToList();
+            //var targetLectures = queryedLectures.Where(x => x.CourseList.Contains(course)).ToList();
+            // Lectures.Include(lect => lect.ListDepartments).Where(x=>x.ListDepartments.Contains(department)).ToList()
 
-            Console.WriteLine("Select to which Lecture to add:");
-            foreach (var lecture in indexedCourse) {Console.WriteLine($"{i++} - {lecture.Name}");}
 
-            var queryedLectures = db.Lectures.Include(x => x.CourseList).Where(x => x.ID == course.ID);
+            var indexLimiter = queryedLectures.Count();
 
-            var targetLecture = queryedLectures.SingleOrDefault(x => x.ID == InputValidationHelper.IntInputValidation(indexLimiter));
-            return targetLecture;
+            Console.WriteLine("Select which Lecture to add:");
+            foreach (var lecture in queryedLectures) {Console.WriteLine($"{i++} - {lecture.Name}");}
+
+            var userSelection = InputValidationHelper.IntInputValidation(indexLimiter);
+            var selectedLecture = queryedLectures[userSelection-1];
+            return selectedLecture;
         }
 
             #endregion

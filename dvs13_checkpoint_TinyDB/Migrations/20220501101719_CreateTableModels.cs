@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace dvs13_checkpoint_TinyDB.Migrations
+namespace dvs13_TinyDB.Migrations
 {
     public partial class CreateTableModels : Migration
     {

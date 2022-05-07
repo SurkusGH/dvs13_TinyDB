@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dvs13_checkpoint_TinyDB.DataModels
+namespace dvs13_TinyDB.DataModels
 {
     public class Student : Common
     {

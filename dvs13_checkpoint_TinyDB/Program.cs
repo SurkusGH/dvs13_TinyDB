@@ -1,13 +1,13 @@
-﻿using dvs13_checkpoint_TinyDB.Functions;
+﻿using dvs13_TinyDB.Functions;
 using System;
 
-namespace dvs13_checkpoint_TinyDB
+namespace dvs13_TinyDB
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("dvs13_checkpoint_TinyDB!");
+            Console.WriteLine("dvs13_TinyDB!");
             #region Problem/Task
 
             //          Studentų informacinė sistema:
