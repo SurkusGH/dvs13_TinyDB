@@ -12,18 +12,22 @@ namespace dvs13_TinyDB
         public static void Menu()
         {
             Console.WriteLine();
-            Console.WriteLine($"Functions:" +
-                              $"\n [1] to create a *COURSE* + *STUDENT* + *LECTURES*" +
-                              $"\n [2] to add *STUDENT* + *LECTURES* to existing *COURSE*" +
-                              $"\n [3] to add *LECTURES* to existing *COURSE*" +
-                              $"\n [4] to existing *COURSE* add *STUDENT* + *LECTURES* from DB" +
-                              $"\n [5] to transfer *STUDENT* to other *COURSE*" +
-                              $"\n\nDepict DB Data:" +
-                              $"\n [6] PRINT courses w/ asociated students" +
-                              $"\n [7] PRINT courses w/ asociated lectures" +
-                              $"\n [8] PRINT lecture w/ asociated students" +
-                              $"\n [9] to PRINT *all* data" +
-                              $"\n[10] Enviroment.Exit()");
+            Console.WriteLine($"\nFunctions:" +
+                              $"\n [1] -> create a *COURSE* + *STUDENT* + *LECTURES*" +
+                              $"\n                  (!)new     (!)new      (!)new" +
+                              $"\n\n [2] -> add *STUDENT* + *LECTURES* to *COURSE*" +
+                              $"\n             (!)new         (!)new      (!)in_DB" +
+                              $"\n\n [3] -> add *LECTURES* to *COURSE*" +
+                              $"\n              (!)new       (!)in_DB" +
+                              $"\n\n [4] -> *COURSE* + *STUDENT* + *LECTURES*" +
+                              $"\n        (!)in_DB    (!)new     (!)in_DB" +
+                              $"\n\n [5] -> transfer *STUDENT* to other *COURSE*" +
+                              $"\n\n\nDB Data Depictiom:" +
+                              $"\n [6] -> print *COURSES* w/ all asociated *STUDENTS*" +
+                              $"\n [7] -> print *COURSES* w/ all asociated *LECTURES*" +
+                              $"\n [8] -> PRINT *LECTURE* w/ all asociated *STUDENTS*" +
+                              $"\n [9] -> print all *DATA*" +
+                              $"\n[10] <- Enviroment.Exit()");
 
             switch (InputValidationHelper.IntInputValidation(10))
             {
