@@ -73,6 +73,5 @@ namespace dvs13_TinyDB.CRUD
             Console.WriteLine($"Student: {selectedStudent.Name} selected");
             return selectedStudent;
         }
-
     }
 }

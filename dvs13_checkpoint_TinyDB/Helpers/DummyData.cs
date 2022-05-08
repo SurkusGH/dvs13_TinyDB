@@ -12,6 +12,8 @@ namespace dvs13_TinyDB.Helpers
         
         public static void Inject()
         {
+            #region CourseDescription
+
             Course course1 = new();
             course1.Name = "Programavimas";
             Course course2 = new();
@@ -21,6 +23,10 @@ namespace dvs13_TinyDB.Helpers
 
             db.AddRange(course1, course2, course3);
             db.SaveChanges();
+
+            #endregion LectureDescription; Relatioship injection
+
+            #region LecturesDescription, RelationshipInjection
 
             Lecture lecture1 = new(); lecture1.Name = "C#" ;
             Lecture lecture2 = new(); lecture2.Name = "Java";
@@ -55,6 +61,9 @@ namespace dvs13_TinyDB.Helpers
                                                              lectureList3.Add(lecture12);
             course3.LectureList = lectureList3;
 
+            #endregion
+
+            #region StudentsDescription, RelationshipInjection
 
             Student student1 = new();
                     student1.Name = "Antanas Antanaitis";
@@ -76,6 +85,7 @@ namespace dvs13_TinyDB.Helpers
                     student4.Course = course3;
                     student4.LectureList.AddRange(lectureList3);
 
+            #endregion
 
             db.AddRange(student1, student2, student3, student4);
             db.SaveChanges();

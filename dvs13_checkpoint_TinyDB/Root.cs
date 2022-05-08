@@ -8,6 +8,7 @@ namespace dvs13_TinyDB
     {
         public static void Menu()
         {
+            #region MenuStringInterpolation
             Console.WriteLine();
             Console.WriteLine($"\nFunctions:" +
                               $"\n\n [1] -> create a *COURSE* + *STUDENT* + *LECTURES*" +
@@ -24,7 +25,7 @@ namespace dvs13_TinyDB
                               $"\n [6] -> print *COURSES* w/ all asociated *STUDENTS*" +
                               $"\n [7] -> print *COURSES* w/ all asociated *LECTURES*" +
                               $"\n [8] -> PRINT *STUDENT* w/ all asociated *LECTURES*" +
-                              $"\n\n --- --- --- --- --- --- --- --- --- --- --- --- ---" +
+                              $"\n\n [ForTestingPurposes]" +
                               $"\n [9] -> print all *DATA*" +
                               $"\n    [10] -> print all *COURSES* w/ all asociated *STUDENTS*" +
                               $"\n    [11] -> print all *COURSES* w/ all asociated *LECTURES*" +
@@ -32,7 +33,9 @@ namespace dvs13_TinyDB
                               $"\n\n --- --- --- --- --- --- --- --- --- --- --- --- ---" +
                               $"\n[13] ++ add Dummy data for testing purposes" +
                               $"\n\n[14] <- Enviroment.Exit()");
+            #endregion
 
+            #region SwitchCase
             switch (InputValidation.IntInputValidation(14)-1)
             {
                 case 0:
@@ -91,6 +94,7 @@ namespace dvs13_TinyDB
                     Environment.Exit(1);
                     break;
             }
+            #endregion
         }
     }
 }

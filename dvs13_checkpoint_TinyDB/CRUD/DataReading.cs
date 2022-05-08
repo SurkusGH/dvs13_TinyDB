@@ -20,10 +20,7 @@ namespace dvs13_TinyDB.Functions
             var selectedCourse = DataQuery.CourseSelector();
 
             Console.WriteLine("Course w/ asociated students");
-            foreach (var student in selectedCourse.StudentList)
-            {
-                Console.WriteLine($"{index++} - {student.Name}");
-            }
+            foreach (var student in selectedCourse.StudentList){Console.WriteLine($"{index++} - {student.Name}");}
         }
         #endregion
 
@@ -35,11 +32,8 @@ namespace dvs13_TinyDB.Functions
             Console.WriteLine("Select a course:");
             var selectedCourse = DataQuery.CourseSelector();
 
-            Console.WriteLine("Course w/ asociated students");
-            foreach (var lecture in selectedCourse.LectureList)
-            {
-                Console.WriteLine($"{index++} - {lecture.Name}");
-            }
+            Console.WriteLine("Course w/ asociated lectures");
+            foreach (var lecture in selectedCourse.LectureList{Console.WriteLine($"{index++} - {lecture.Name}");}
         }
 
         #endregion
@@ -54,10 +48,7 @@ namespace dvs13_TinyDB.Functions
             var selectedStudent = DataQuery.StudentSelector();
 
             Console.WriteLine("Student w/ asociated lectures");
-            foreach (var lecture in selectedStudent.LectureList)
-            {
-                Console.WriteLine($"{index++} - {lecture.Name}");
-            }
+            foreach (var lecture in selectedStudent.LectureList) {Console.WriteLine($"{index++} - {lecture.Name}");}
         }
 
         public static void QueryLecturesByStudent(Student student)
@@ -71,7 +62,7 @@ namespace dvs13_TinyDB.Functions
 
         #endregion
 
-        #region AdditionalFunctionality
+        #region ForTestingPurposes
         public static void AllDataQuery()
         {
             var courses = db.Courses.Include(x => x.LectureList).Include(x => x.StudentList);
