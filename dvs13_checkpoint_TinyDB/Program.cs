@@ -36,7 +36,7 @@ namespace dvs13_TinyDB
 
             #region Migration Command Lines
 
-            // Add-Migration CreateTableModels
+            // Add-Migration TransferTableModelsTo_MSSQL
             // Update-Database
 
             #endregion

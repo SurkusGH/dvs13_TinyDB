@@ -33,7 +33,7 @@ namespace dvs13_TinyDB.Functions
             var selectedCourse = DataQuery.CourseSelector();
 
             Console.WriteLine("Course w/ asociated lectures");
-            foreach (var lecture in selectedCourse.LectureList{Console.WriteLine($"{index++} - {lecture.Name}");}
+            foreach (var lecture in selectedCourse.LectureList){Console.WriteLine($"{index++} - {lecture.Name}");}
         }
 
         #endregion

@@ -20,8 +20,8 @@ namespace dvs13_TinyDB.Functions
         {
             Course course = new();
             Console.WriteLine($"Declare *Course* name");
-
             course.Name = Console.ReadLine();
+
             DublicationCatcher.CheckCourses(course);
             course.StudentList.Add(AddStudent(course));
 
@@ -31,10 +31,9 @@ namespace dvs13_TinyDB.Functions
         public static Student AddStudent(Course course)
         {
             Student student = new();
-
             Console.WriteLine($"Declare *Student* name");
-
             student.Name = Console.ReadLine();
+
             DublicationCatcher.CheckStudents(student);
             student.Course = course;
 
@@ -42,6 +41,7 @@ namespace dvs13_TinyDB.Functions
 
             Console.WriteLine($"Add *More* lectures? y/n");
             var input = InputValidation.CharInputValidation();
+
             while (input == "y")
             {
                 student.LectureList.Add(AddLecture(course, student));
@@ -54,12 +54,12 @@ namespace dvs13_TinyDB.Functions
         public static Lecture AddLecture(Course course, Student student)
         {
             Lecture lecture = new();
-
             Console.WriteLine($"Declare *Lecture* name");
             var lectureName = Console.ReadLine();
-
             lecture.Name = lectureName;
+
             DublicationCatcher.CheckLectures(lecture);
+
             lecture.StudentList.Add(student);
             lecture.CourseList.Add(course);
             
@@ -73,26 +73,28 @@ namespace dvs13_TinyDB.Functions
         public static void ToExistingCourse_Add_StudentLectures()
         {
             Course course = new();
+            int index = 1;
+
             Console.WriteLine("Existing Courses");
-            int i = 1;
-            db.Courses.Select(x => x.Name).ToList().ForEach(x => Console.WriteLine($"{i++} - {x}"));
+            db.Courses.Select(x => x.Name).ToList().ForEach(x => Console.WriteLine($"{index++} - {x}"));
             var indexLimiter = db.Courses.Select(x => x.Name).ToList().Count();
+
             Console.WriteLine("Select to which Course to add to:");
             var targetCourse = db.Courses.SingleOrDefault(x => x.ID == InputValidation.IntInputValidation(indexLimiter));
-            Console.WriteLine($"Course: #{targetCourse.ID} - {targetCourse.Name} selected");
 
+            Console.WriteLine($"Course: #{targetCourse.ID} - {targetCourse.Name} selected");
             targetCourse.StudentList.Add(AddStudent(targetCourse));
+
             db.Update(targetCourse);
             db.SaveChanges();
         }
         public static Lecture AddLecture(Course course)
         {
             Lecture lecture = new();
-
             Console.WriteLine($"Declare *Lecture* name");
             var lectureName = Console.ReadLine();
-
             lecture.Name = lectureName;
+
             DublicationCatcher.CheckLectures(lecture);
             lecture.CourseList.Add(course);
 
@@ -104,17 +106,21 @@ namespace dvs13_TinyDB.Functions
         // (2.3) Sukurti paskaitą ir ją priskirti prie departamento;
         public static void ToExistingCourse_Add_Lectures()
         {
+            int index = 1;
             Course course = new();
-            int i = 1;
-            db.Courses.Select(x => x.Name).ToList().ForEach(x => Console.WriteLine($"{i++} - {x}"));
+
+            db.Courses.Select(x => x.Name).ToList().ForEach(x => Console.WriteLine($"{index++} - {x}"));
             var indexLimiter = db.Courses.Select(x => x.Name).ToList().Count();
+
             Console.WriteLine("Select to which Course to add to:");
             var targetCourse = db.Courses.SingleOrDefault(x => x.ID == InputValidation.IntInputValidation(indexLimiter));
+
             Console.WriteLine($"Course: #{targetCourse.ID} - {targetCourse.Name} selected");
             targetCourse.LectureList.Add(AddLecture(targetCourse));
 
             Console.WriteLine($"Add *More* lectures? y/n");
             var input = InputValidation.CharInputValidation();
+
             while (input == "y")
             {
                 targetCourse.LectureList.Add(AddLecture(targetCourse));
@@ -134,14 +140,16 @@ namespace dvs13_TinyDB.Functions
         //       egzistuojančias paskaitas;
         public static void ToExistingCourse_Add_CreatedStudent_AddExistingLectures()
         {
-            Console.WriteLine("Existing Courses");
-            int i = 1;
-            db.Courses.Select(x => x.Name).ToList().ForEach(x => Console.WriteLine($"{i++} - {x}"));
+            int index = 1;
             var indexLimiter = db.Courses.Select(x => x.Name).ToList().Count();
+
+            Console.WriteLine("Existing Courses");
+            db.Courses.Select(x => x.Name).ToList().ForEach(x => Console.WriteLine($"{index++} - {x}"));
+            
             Console.WriteLine("Select to which *Course* to add to:");
             var targetCourse = db.Courses.SingleOrDefault(x => x.ID == InputValidation.IntInputValidation(indexLimiter));
-            Console.WriteLine($"Course: #{targetCourse.ID} - {targetCourse.Name} selected");
 
+            Console.WriteLine($"Course: #{targetCourse.ID} - {targetCourse.Name} selected");
             targetCourse.StudentList.Add(AddStudent_LecturesFromList(targetCourse));
 
             db.Update(targetCourse);
@@ -153,37 +161,37 @@ namespace dvs13_TinyDB.Functions
             Student student = new();
 
             Console.WriteLine($"Declare *Student* name");
-
             student.Name = Console.ReadLine();
+            DublicationCatcher.CheckStudents(student);
 
             student.Course = course;
-            DublicationCatcher.CheckStudents(student);
             student.LectureList.Add(AddLectureFromList(course));
 
             Console.WriteLine($"Add *More* lectures? y/n");
             var input = InputValidation.CharInputValidation();
+
             while (input == "y")
             {
                 student.LectureList.Add(AddLectureFromList(course));
                 Console.WriteLine($"Add *More* lectures? y/n");
                 input = InputValidation.CharInputValidation();
             }
-
             return student;
         }
 
         public static Lecture AddLectureFromList(Course course)
         {
-            int i = 1;
-            var queryedLectures = db.Lectures.Include(x => x.CourseList).Where(x => x.CourseList.Contains(course)).ToList();
+            int index = 1;
 
+            var queryedLectures = db.Lectures.Include(x => x.CourseList).Where(x => x.CourseList.Contains(course)).ToList();
             var indexLimiter = queryedLectures.Count();
 
             Console.WriteLine("Select which Lecture to add:");
-            foreach (var lecture in queryedLectures) {Console.WriteLine($"{i++} - {lecture.Name}");}
+            foreach (var lecture in queryedLectures) {Console.WriteLine($"{index++} - {lecture.Name}");}
 
             var userSelection = InputValidation.IntInputValidation(indexLimiter+1);
             var selectedLecture = queryedLectures[userSelection-1];
+
             return selectedLecture;
         }
 
@@ -192,35 +200,32 @@ namespace dvs13_TinyDB.Functions
         #region (2.5)
         public static void Change_ExistingStudents_CourseAlociation()
         {
-            Console.WriteLine("Existing Students and their course allocation:");
+            
             int index = 1;
             var allStudents = db.Students.Include(x => x.Course).Include(x => x.LectureList).ToList();
             var indexLimiter = allStudents.Count();
-            foreach (var student in allStudents)
-            {
-                Console.WriteLine($"index:{index++} - {student.Name} - course: {student.Course.Name} ");
-            }
+
+            Console.WriteLine("Existing Students and their course allocation:");
+            foreach (var student in allStudents){Console.WriteLine($"index:{index++} - {student.Name} - course: {student.Course.Name} ");}
 
             Console.WriteLine("Select a student to move a course:");
-
             var selectedStudent = allStudents[InputValidation.IntInputValidation(indexLimiter)-1];
 
             Console.WriteLine($"Select a new course for a student {selectedStudent.Name}:");
-            var j = 1;
-            db.Courses.Select(x => x.Name).ToList().ForEach(x => Console.WriteLine($"{j++} - {x}"));
+            index = 1;
+
+            db.Courses.Select(x => x.Name).ToList().ForEach(x => Console.WriteLine($"{index++} - {x}"));
             var indexLimiter2 = db.Courses.Select(x => x.Name).ToList().Count();
             var selectedtCourse = db.Courses.Include(x => x.LectureList).SingleOrDefault(x => x.ID == (InputValidation.IntInputValidation(indexLimiter2)));
 
             Console.WriteLine($"Student {selectedStudent.Name} is moved to {selectedtCourse.Name}");
 
-
             selectedStudent.Course = selectedtCourse;
             selectedStudent.LectureList.Clear();
             selectedStudent.LectureList = selectedtCourse.LectureList;
 
-            Console.WriteLine($"Lectures are now changed to {selectedtCourse.Name} course's lectures");
+            Console.WriteLine($"Lectures are now changed to {selectedtCourse.Name} course's lectures:");
             DataReading.QueryLecturesByStudent(selectedStudent);
-
 
             db.Update(selectedStudent);
             db.SaveChanges();

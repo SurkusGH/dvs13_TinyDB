@@ -2,7 +2,7 @@
 
 namespace dvs13_TinyDB.Migrations
 {
-    public partial class CreateTableModels : Migration
+    public partial class TransferTableModelsTo_MSSQL : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

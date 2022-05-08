@@ -10,8 +10,8 @@ using dvs13_TinyDB.DataAccess;
 namespace dvs13_TinyDB.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220508094328_CreateTableModels")]
-    partial class CreateTableModels
+    [Migration("20220508121157_TransferTableModelsTo_MSSQL")]
+    partial class TransferTableModelsTo_MSSQL
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
