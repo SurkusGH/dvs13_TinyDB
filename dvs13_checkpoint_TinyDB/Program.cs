@@ -42,7 +42,6 @@ namespace dvs13_TinyDB
             #endregion
 
             Root.Menu();
-
         }
     }
 }

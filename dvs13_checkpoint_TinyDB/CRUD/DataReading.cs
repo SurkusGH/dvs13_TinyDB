@@ -131,15 +131,15 @@ namespace dvs13_TinyDB.Functions
         }
         public static void AllLecturesByStudent()
         {
-            var lectures = db.Lectures.Include(x => x.StudentList);
+            var students = db.Students.Include(x => x.LectureList);
             Console.WriteLine("\nLecture w/ asociated students");
-            foreach (var lecture in lectures)
+            foreach (var student in students)
             {
-                Console.WriteLine($"{lecture.ID} - {lecture.Name}");
+                Console.WriteLine($"{student.ID} - {student.Name}");
 
-                foreach (var student in lecture.StudentList)
+                foreach (var lecture in student.LectureList)
                 {
-                    Console.WriteLine($"         {student.ID} - {student.Name}");
+                    Console.WriteLine($"         {lecture.ID} - {lecture.Name}");
                 }
             }
         }
