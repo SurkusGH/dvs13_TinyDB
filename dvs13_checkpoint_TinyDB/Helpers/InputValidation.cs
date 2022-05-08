@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dvs13_TinyDB.Functions
 {
-    public class InputValidationHelper
+    public class InputValidation
     {
         /// <summary>
         /// This filter limits input to two letters: eiter 'y', or 'n'
@@ -29,7 +25,7 @@ namespace dvs13_TinyDB.Functions
         }
 
         /// <summary>
-        /// This filter is limited by user (hardcoded)
+        /// This filter is limited by user (hardcoded), or by .count() from external method
         /// </summary>
         /// <param name="validatorSize"></param>
         /// <returns></returns>
@@ -46,7 +42,7 @@ namespace dvs13_TinyDB.Functions
                 success = int.TryParse(input, out inputValue) && inputValue >= 0 && inputValue <= validatorSize;
             }
             Console.Clear();
-            return inputValue-1;
+            return inputValue;
         }
     }
 }

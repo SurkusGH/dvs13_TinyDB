@@ -10,7 +10,7 @@ using dvs13_TinyDB.DataAccess;
 namespace dvs13_TinyDB.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220501101719_CreateTableModels")]
+    [Migration("20220508094328_CreateTableModels")]
     partial class CreateTableModels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,7 +51,7 @@ namespace dvs13_TinyDB.Migrations
                     b.ToTable("LectureStudent");
                 });
 
-            modelBuilder.Entity("dvs13_checkpoint_TinyDB.DataModels.Course", b =>
+            modelBuilder.Entity("dvs13_TinyDB.DataModels.Course", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -66,7 +66,7 @@ namespace dvs13_TinyDB.Migrations
                     b.ToTable("Courses");
                 });
 
-            modelBuilder.Entity("dvs13_checkpoint_TinyDB.DataModels.Lecture", b =>
+            modelBuilder.Entity("dvs13_TinyDB.DataModels.Lecture", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -81,7 +81,7 @@ namespace dvs13_TinyDB.Migrations
                     b.ToTable("Lectures");
                 });
 
-            modelBuilder.Entity("dvs13_checkpoint_TinyDB.DataModels.Student", b =>
+            modelBuilder.Entity("dvs13_TinyDB.DataModels.Student", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -103,13 +103,13 @@ namespace dvs13_TinyDB.Migrations
 
             modelBuilder.Entity("CourseLecture", b =>
                 {
-                    b.HasOne("dvs13_checkpoint_TinyDB.DataModels.Course", null)
+                    b.HasOne("dvs13_TinyDB.DataModels.Course", null)
                         .WithMany()
                         .HasForeignKey("CourseListID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("dvs13_checkpoint_TinyDB.DataModels.Lecture", null)
+                    b.HasOne("dvs13_TinyDB.DataModels.Lecture", null)
                         .WithMany()
                         .HasForeignKey("LectureListID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -118,29 +118,29 @@ namespace dvs13_TinyDB.Migrations
 
             modelBuilder.Entity("LectureStudent", b =>
                 {
-                    b.HasOne("dvs13_checkpoint_TinyDB.DataModels.Lecture", null)
+                    b.HasOne("dvs13_TinyDB.DataModels.Lecture", null)
                         .WithMany()
                         .HasForeignKey("LectureListID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("dvs13_checkpoint_TinyDB.DataModels.Student", null)
+                    b.HasOne("dvs13_TinyDB.DataModels.Student", null)
                         .WithMany()
                         .HasForeignKey("StudentListID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("dvs13_checkpoint_TinyDB.DataModels.Student", b =>
+            modelBuilder.Entity("dvs13_TinyDB.DataModels.Student", b =>
                 {
-                    b.HasOne("dvs13_checkpoint_TinyDB.DataModels.Course", "Course")
+                    b.HasOne("dvs13_TinyDB.DataModels.Course", "Course")
                         .WithMany("StudentList")
                         .HasForeignKey("CourseID");
 
                     b.Navigation("Course");
                 });
 
-            modelBuilder.Entity("dvs13_checkpoint_TinyDB.DataModels.Course", b =>
+            modelBuilder.Entity("dvs13_TinyDB.DataModels.Course", b =>
                 {
                     b.Navigation("StudentList");
                 });

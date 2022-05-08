@@ -30,10 +30,10 @@ namespace dvs13_TinyDB
                               $"\n    [11] -> print all *COURSES* w/ all asociated *LECTURES*" +
                               $"\n    [12] -> PRINT all *STUDENTs* w/ all asociated *LECTURES*" +
                               $"\n\n --- --- --- --- --- --- --- --- --- --- --- --- ---" +
-                              $"\n[13] -> add Dummy data for testing purposes" +
+                              $"\n[13] ++ add Dummy data for testing purposes" +
                               $"\n\n[14] <- Enviroment.Exit()");
 
-            switch (InputValidationHelper.IntInputValidation(14))
+            switch (InputValidation.IntInputValidation(14)-1)
             {
                 case 0:
                     DataCreation.AddCourse();

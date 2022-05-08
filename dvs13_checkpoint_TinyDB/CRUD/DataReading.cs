@@ -1,11 +1,8 @@
 ﻿using dvs13_TinyDB.CRUD;
 using dvs13_TinyDB.DataAccess;
+using dvs13_TinyDB.DataModels;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dvs13_TinyDB.Functions
 {
@@ -53,11 +50,20 @@ namespace dvs13_TinyDB.Functions
         public static void QueryLecturesByStudent()
         {
             var index = 1;
-            Console.WriteLine("Select a course:");
+            Console.WriteLine("Select a student:");
             var selectedStudent = DataQuery.StudentSelector();
 
             Console.WriteLine("Student w/ asociated lectures");
             foreach (var lecture in selectedStudent.LectureList)
+            {
+                Console.WriteLine($"{index++} - {lecture.Name}");
+            }
+        }
+
+        public static void QueryLecturesByStudent(Student student)
+        {
+            var index = 1;
+            foreach (var lecture in student.LectureList)
             {
                 Console.WriteLine($"{index++} - {lecture.Name}");
             }
@@ -71,7 +77,7 @@ namespace dvs13_TinyDB.Functions
             var courses = db.Courses.Include(x => x.LectureList).Include(x => x.StudentList);
             var lectures = db.Lectures.Include(x => x.StudentList);
 
-            Console.WriteLine("Course w/ asociated lectures");
+            Console.WriteLine("\nCourse w/ asociated lectures");
             foreach (var course in courses)
             {
                 Console.WriteLine($"{course.ID} - {course.Name}");
@@ -82,7 +88,7 @@ namespace dvs13_TinyDB.Functions
                 }
             }
 
-            Console.WriteLine("Course w/ asociated students");
+            Console.WriteLine("\nCourse w/ asociated students");
             foreach (var course in courses)
             {
                 Console.WriteLine($"{course.ID} - {course.Name}");
@@ -93,7 +99,7 @@ namespace dvs13_TinyDB.Functions
                 }
             }
 
-            Console.WriteLine("Lecture w/ asociated students");
+            Console.WriteLine("\nLecture w/ asociated students");
             foreach (var lecture in lectures)
             {
                 Console.WriteLine($"{lecture.ID} - {lecture.Name}");
@@ -107,7 +113,7 @@ namespace dvs13_TinyDB.Functions
         public static void AllCoursesWithStudents()
         {
             var courses = db.Courses.Include(x => x.StudentList);
-            Console.WriteLine("Course w/ asociated students");
+            Console.WriteLine("\nCourse w/ asociated students");
             foreach (var course in courses)
             {
                 Console.WriteLine($"{course.ID} - {course.Name}");
@@ -121,7 +127,7 @@ namespace dvs13_TinyDB.Functions
         public static void AllCoursesWithLectures()
         {
             var courses = db.Courses.Include(x => x.LectureList);
-            Console.WriteLine("Course w/ asociated lectures");
+            Console.WriteLine("\nCourse w/ asociated lectures");
             foreach (var course in courses)
             {
                 Console.WriteLine($"{course.ID} - {course.Name}");
@@ -135,7 +141,7 @@ namespace dvs13_TinyDB.Functions
         public static void AllLecturesByStudent()
         {
             var lectures = db.Lectures.Include(x => x.StudentList);
-            Console.WriteLine("Lecture w/ asociated students");
+            Console.WriteLine("\nLecture w/ asociated students");
             foreach (var lecture in lectures)
             {
                 Console.WriteLine($"{lecture.ID} - {lecture.Name}");

@@ -1,5 +1,4 @@
-﻿using dvs13_TinyDB.Functions;
-using System;
+﻿using System;
 
 namespace dvs13_TinyDB
 {
@@ -37,7 +36,7 @@ namespace dvs13_TinyDB
 
             #region Migration Command Lines
 
-            // Add-Migration InitialCreate
+            // Add-Migration CreateTableModels
             // Update-Database
 
             #endregion

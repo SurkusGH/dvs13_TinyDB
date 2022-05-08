@@ -3,9 +3,6 @@ using dvs13_TinyDB.DataModels;
 using dvs13_TinyDB.Functions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dvs13_TinyDB.Helpers
 {
@@ -60,25 +57,24 @@ namespace dvs13_TinyDB.Helpers
 
 
             Student student1 = new();
-            student1.Name = "Antanas Antanaitis";
-            student1.Course = course1;
-            student1.LectureList.AddRange(lectureList1);
+                    student1.Name = "Antanas Antanaitis";
+                    student1.Course = course1;
+                    student1.LectureList.AddRange(lectureList1);
 
             Student student2 = new();
-            student2.Name = "Jonas Jonaitis";
-            student2.Course = course2;
-            student2.LectureList.AddRange(lectureList2);
+                    student2.Name = "Jonas Jonaitis";
+                    student2.Course = course2;
+                    student2.LectureList.AddRange(lectureList2);
 
             Student student3 = new();
-            student3.Name = "Juozas Juozaitis";
-            student3.Course = course3;
-            student3.LectureList.AddRange(lectureList3);
+                    student3.Name = "Juozas Juozaitis";
+                    student3.Course = course3;
+                    student3.LectureList.AddRange(lectureList3);
 
             Student student4 = new();
-            student4.Name = "Petras Petraitis";
-            student4.Course = course3;
-            student4.LectureList.AddRange(lectureList3);
-
+                    student4.Name = "Petras Petraitis";
+                    student4.Course = course3;
+                    student4.LectureList.AddRange(lectureList3);
 
 
             db.AddRange(student1, student2, student3, student4);
