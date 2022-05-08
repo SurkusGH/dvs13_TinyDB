@@ -25,8 +25,8 @@ namespace dvs13_TinyDB.CRUD
             Console.WriteLine("Select a *Course*:");
 
             var selectedCourse = db.Courses.Include(x => x.StudentList)
-                                         .Include(x => x.LectureList)
-                                         .SingleOrDefault(x => x.ID == InputValidation.IntInputValidation(indexLimiter));
+                                           .Include(x => x.LectureList)
+                                           .SingleOrDefault(x => x.ID == InputValidation.IntInputValidation(indexLimiter));
 
             Console.WriteLine($"Course: #{selectedCourse.ID} - {selectedCourse.Name} selected");
             return selectedCourse;
@@ -47,8 +47,8 @@ namespace dvs13_TinyDB.CRUD
 
             Console.WriteLine("Select a *Lecture*:");
             var selectedLecture = db.Lectures.Include(x => x.StudentList)
-                                           .Include(x => x.CourseList)
-                                           .SingleOrDefault(x => x.ID == InputValidation.IntInputValidation(indexLimiter));
+                                             .Include(x => x.CourseList)
+                                             .SingleOrDefault(x => x.ID == InputValidation.IntInputValidation(indexLimiter));
 
             Console.WriteLine($"Lecture: {selectedLecture.Name} selected");
             return selectedLecture;
@@ -67,7 +67,9 @@ namespace dvs13_TinyDB.CRUD
                                           .Count();
 
             Console.WriteLine("Select a *Student*:");
-            var selectedStudent = db.Students.Include(x => x.Course).Include(x => x.LectureList).SingleOrDefault(x => x.ID == InputValidation.IntInputValidation(indexLimiter));
+            var selectedStudent = db.Students.Include(x => x.Course)
+                                             .Include(x => x.LectureList)
+                                             .SingleOrDefault(x => x.ID == InputValidation.IntInputValidation(indexLimiter));
             Console.WriteLine($"Student: {selectedStudent.Name} selected");
             return selectedStudent;
         }

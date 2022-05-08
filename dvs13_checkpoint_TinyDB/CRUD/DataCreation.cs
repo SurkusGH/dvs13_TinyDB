@@ -216,6 +216,7 @@ namespace dvs13_TinyDB.Functions
 
             selectedStudent.Course = selectedtCourse;
 
+            selectedStudent.LectureList.Clear();
             selectedStudent.LectureList = selectedtCourse.LectureList;
 
             Console.WriteLine($"Lectures are now changed to {selectedStudent.Name} course's lectures");
