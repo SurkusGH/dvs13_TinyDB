@@ -1,9 +1,6 @@
 ﻿using dvs13_TinyDB.Functions;
+using dvs13_TinyDB.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dvs13_TinyDB
 {
@@ -26,11 +23,17 @@ namespace dvs13_TinyDB
                               $"\n\n\nDB Data Depictiom:" +
                               $"\n [6] -> print *COURSES* w/ all asociated *STUDENTS*" +
                               $"\n [7] -> print *COURSES* w/ all asociated *LECTURES*" +
-                              $"\n [8] -> PRINT *LECTURE* w/ all asociated *STUDENTS*" +
+                              $"\n [8] -> PRINT *STUDENT* w/ all asociated *LECTURES*" +
+                              $"\n\n --- --- --- --- --- --- --- --- --- --- --- --- ---" +
                               $"\n [9] -> print all *DATA*" +
-                              $"\n[10] <- Enviroment.Exit()");
+                              $"\n    [10] -> print all *COURSES* w/ all asociated *STUDENTS*" +
+                              $"\n    [11] -> print all *COURSES* w/ all asociated *LECTURES*" +
+                              $"\n    [12] -> PRINT all *STUDENTs* w/ all asociated *LECTURES*" +
+                              $"\n\n --- --- --- --- --- --- --- --- --- --- --- --- ---" +
+                              $"\n[13] -> add Dummy data for testing purposes" +
+                              $"\n\n[14] <- Enviroment.Exit()");
 
-            switch (InputValidationHelper.IntInputValidation(10))
+            switch (InputValidationHelper.IntInputValidation(14))
             {
                 case 0:
                     DataCreation.AddCourse();
@@ -65,10 +68,26 @@ namespace dvs13_TinyDB
                     Menu();
                     break;
                 case 8:
-                    DataReading.Dev_QueryCourses();
+                    DataReading.AllDataQuery();
                     Menu();
                     break;
                 case 9:
+                    DataReading.AllCoursesWithStudents();
+                    Menu();
+                    break;
+                case 10:
+                    DataReading.AllCoursesWithLectures();
+                    Menu();
+                    break;
+                case 11:
+                    DataReading.AllLecturesByStudent();
+                    Menu();
+                    break;
+                case 12:
+                    DummyData.Inject();
+                    Menu();
+                    break;
+                case 13:
                     Environment.Exit(1);
                     break;
             }

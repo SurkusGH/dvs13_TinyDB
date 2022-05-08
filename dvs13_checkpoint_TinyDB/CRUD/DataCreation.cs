@@ -179,6 +179,7 @@ namespace dvs13_TinyDB.Functions
 
         #endregion
 
+        #region (2.5)
         public static void Change_ExistingStudents_CourseAlociation()
         {
             Console.WriteLine("Existing Students and their course allocation:");
@@ -206,5 +207,6 @@ namespace dvs13_TinyDB.Functions
             db.Update(selectedStudent);
             db.SaveChanges();
         }
+        #endregion
     }
 }
