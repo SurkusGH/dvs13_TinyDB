@@ -91,7 +91,7 @@ namespace dvs13_TinyDB
                     Menu();
                     break;
                 case 13:
-                    Environment.Exit(1);
+                    Environment.Exit(0);
                     break;
             }
             #endregion

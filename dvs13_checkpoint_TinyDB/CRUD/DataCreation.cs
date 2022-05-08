@@ -228,6 +228,7 @@ namespace dvs13_TinyDB.Functions
             DataReading.QueryLecturesByStudent(selectedStudent);
 
             db.Update(selectedStudent);
+            db.Update(selectedtCourse);
             db.SaveChanges();
         }
         #endregion
