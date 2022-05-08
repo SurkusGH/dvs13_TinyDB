@@ -36,6 +36,14 @@ namespace dvs13_TinyDB.Functions
             foreach (var lecture in selectedCourse.LectureList){Console.WriteLine($"{index++} - {lecture.Name}");}
         }
 
+        public static void QueryLecturesByCourse(Course course)
+        {
+            var index = 1;
+
+            Console.WriteLine("Course w/ asociated lectures");
+            foreach (var lecture in course.LectureList) { Console.WriteLine($"{index++} - {lecture.Name}"); }
+        }
+
         #endregion
 
         #region (2.8)
@@ -65,8 +73,9 @@ namespace dvs13_TinyDB.Functions
         #region ForTestingPurposes
         public static void AllDataQuery()
         {
-            var courses = db.Courses.Include(x => x.LectureList).Include(x => x.StudentList);
-            var lectures = db.Lectures.Include(x => x.StudentList);
+            var refreshDB = new Context();
+            var courses = refreshDB.Courses.Include(x => x.LectureList).Include(x => x.StudentList);
+            var lectures = refreshDB.Lectures.Include(x => x.StudentList);
 
             Console.WriteLine("\nCourse w/ asociated lectures");
             foreach (var course in courses)
@@ -103,7 +112,8 @@ namespace dvs13_TinyDB.Functions
         }
         public static void AllCoursesWithStudents()
         {
-            var courses = db.Courses.Include(x => x.StudentList);
+            var refreshDB = new Context();
+            var courses = refreshDB.Courses.Include(x => x.StudentList);
             Console.WriteLine("\nCourse w/ asociated students");
             foreach (var course in courses)
             {
@@ -117,7 +127,8 @@ namespace dvs13_TinyDB.Functions
         }
         public static void AllCoursesWithLectures()
         {
-            var courses = db.Courses.Include(x => x.LectureList);
+            var refreshDB = new Context();
+            var courses = refreshDB.Courses.Include(x => x.LectureList);
             Console.WriteLine("\nCourse w/ asociated lectures");
             foreach (var course in courses)
             {
@@ -131,7 +142,8 @@ namespace dvs13_TinyDB.Functions
         }
         public static void AllLecturesByStudent()
         {
-            var students = db.Students.Include(x => x.LectureList);
+            var refreshDB = new Context();
+            var students = refreshDB.Students.Include(x => x.LectureList);
             Console.WriteLine("\nLecture w/ asociated students");
             foreach (var student in students)
             {

@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace dvs13_TinyDB.CRUD
 {
-    public class DataUpdate
+    public class DataUpdating
     {
         private readonly static Context db = new();
 
@@ -44,6 +44,9 @@ namespace dvs13_TinyDB.CRUD
 
             student.Course = course;
             student.LectureList.Add(AddLectureFromList(course));
+
+            Console.WriteLine("Lectures to be added:");
+            DataReading.QueryLecturesByStudent(student);
 
             Console.WriteLine($"Add *More* lectures? y/n");
             var input = InputValidation.CharInputValidation();

@@ -1,4 +1,5 @@
-﻿using dvs13_TinyDB.DataAccess;
+﻿using dvs13_TinyDB.CRUD;
+using dvs13_TinyDB.DataAccess;
 using dvs13_TinyDB.DataModels;
 using dvs13_TinyDB.Helpers;
 using Microsoft.EntityFrameworkCore;
@@ -39,11 +40,17 @@ namespace dvs13_TinyDB.Functions
 
             student.LectureList.Add(AddLecture(course, student));
 
+            Console.WriteLine("Lectures to be added:");
+            DataReading.QueryLecturesByStudent(student);
+
             Console.WriteLine($"Add *More* lectures? y/n");
             var input = InputValidation.CharInputValidation();
 
             while (input == "y")
             {
+                Console.WriteLine("Lectures to be added:");
+                DataReading.QueryLecturesByStudent(student);
+
                 student.LectureList.Add(AddLecture(course, student));
                 Console.WriteLine($"Add *More* lectures? y/n");
                 input = InputValidation.CharInputValidation();
@@ -118,11 +125,17 @@ namespace dvs13_TinyDB.Functions
             Console.WriteLine($"Course: #{targetCourse.ID} - {targetCourse.Name} selected");
             targetCourse.LectureList.Add(AddLecture(targetCourse));
 
+            Console.WriteLine($"Lectures in this ({targetCourse.Name}) course:");
+            DataReading.QueryLecturesByCourse(targetCourse);
+
             Console.WriteLine($"Add *More* lectures? y/n");
             var input = InputValidation.CharInputValidation();
 
             while (input == "y")
             {
+                Console.WriteLine($"Lectures in this ({targetCourse.Name}) course:");
+                DataReading.QueryLecturesByCourse(targetCourse);
+
                 targetCourse.LectureList.Add(AddLecture(targetCourse));
                 Console.WriteLine($"Add *More* lectures? y/n");
                 input = InputValidation.CharInputValidation();

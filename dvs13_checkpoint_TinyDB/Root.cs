@@ -1,4 +1,5 @@
-﻿using dvs13_TinyDB.Functions;
+﻿using dvs13_TinyDB.CRUD;
+using dvs13_TinyDB.Functions;
 using dvs13_TinyDB.Helpers;
 using System;
 
@@ -29,7 +30,7 @@ namespace dvs13_TinyDB
                               $"\n [9] -> print all *DATA*" +
                               $"\n    [10] -> print all *COURSES* w/ all asociated *STUDENTS*" +
                               $"\n    [11] -> print all *COURSES* w/ all asociated *LECTURES*" +
-                              $"\n    [12] -> PRINT all *STUDENTs* w/ all asociated *LECTURES*" +
+                              $"\n    [12] -> PRINT all *STUDENTS* w/ all asociated *LECTURES*" +
                               $"\n\n --- --- --- --- --- --- --- --- --- --- --- --- ---" +
                               $"\n[13] ++ add Dummy data for testing purposes" +
                               $"\n\n[14] <- Enviroment.Exit()");
@@ -51,11 +52,11 @@ namespace dvs13_TinyDB
                     Menu();
                     break;
                 case 3:
-                    DataCreation.ToExistingCourse_Add_CreatedStudent_AddExistingLectures();
+                    DataUpdating.ToExistingCourse_Add_CreatedStudent_AddExistingLectures();
                     Menu();
                     break;
                 case 4:
-                    DataCreation.Change_ExistingStudents_CourseAlociation();
+                    DataUpdating.Change_ExistingStudents_CourseAlociation();
                     Menu();
                     break;
                 case 5:

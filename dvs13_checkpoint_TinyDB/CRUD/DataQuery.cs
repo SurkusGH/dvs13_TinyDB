@@ -73,5 +73,15 @@ namespace dvs13_TinyDB.CRUD
             Console.WriteLine($"Student: {selectedStudent.Name} selected");
             return selectedStudent;
         }
+
+        public static void PrintStudentLectureData(Student student)
+        {
+            var index = 1;
+            db.Lectures.Include(x => x.StudentList)
+                       .Include(x => x.CourseList)
+                                                  .Select(x => x.Name == student.Name)
+                                                  .ToList()
+                                                  .ForEach(x => Console.WriteLine($"{index++} - {x}"));
+        }
     }
 }
